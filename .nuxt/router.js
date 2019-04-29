@@ -2,7 +2,6 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import { interopDefault } from './utils'
 
-const _5ae3e33a = () => interopDefault(import('../pages/inspire.vue' /* webpackChunkName: "pages/inspire" */))
 const _2cb6ef32 = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
 
 Vue.use(Router)
@@ -80,10 +79,6 @@ export function createRouter() {
     scrollBehavior,
 
     routes: [{
-      path: "/inspire",
-      component: _5ae3e33a,
-      name: "inspire"
-    }, {
       path: "/",
       component: _2cb6ef32,
       name: "index"

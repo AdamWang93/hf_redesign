@@ -1,115 +1,57 @@
-<template>
-  <v-app dark>
-    <v-navigation-drawer
-      v-model="drawer"
-      :mini-variant="miniVariant"
-      :clipped="clipped"
-      fixed
-      app
-    >
-      <v-list>
-        <v-list-tile
-          v-for="(item, i) in items"
-          :key="i"
-          :to="item.to"
-          router
-          exact
-        >
-          <v-list-tile-action>
-            <v-icon>{{ item.icon }}</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title v-text="item.title" />
-          </v-list-tile-content>
-        </v-list-tile>
-      </v-list>
-    </v-navigation-drawer>
-    <v-toolbar
-      :clipped-left="clipped"
-      fixed
-      app
-    >
-      <v-toolbar-side-icon @click="drawer = !drawer" />
-      <v-btn
-        icon
-        @click.stop="miniVariant = !miniVariant"
-      >
-        <v-icon>{{ `chevron_${miniVariant ? 'right' : 'left'}` }}</v-icon>
-      </v-btn>
-      <v-btn
-        icon
-        @click.stop="clipped = !clipped"
-      >
-        <v-icon>web</v-icon>
-      </v-btn>
-      <v-btn
-        icon
-        @click.stop="fixed = !fixed"
-      >
-        <v-icon>remove</v-icon>
-      </v-btn>
-      <v-toolbar-title v-text="title" />
-      <v-spacer />
-      <v-btn
-        icon
-        @click.stop="rightDrawer = !rightDrawer"
-      >
-        <v-icon>menu</v-icon>
-      </v-btn>
-    </v-toolbar>
-    <v-content>
-      <v-container>
-        <nuxt />
-      </v-container>
-    </v-content>
-    <v-navigation-drawer
-      v-model="rightDrawer"
-      :right="right"
-      temporary
-      fixed
-    >
-      <v-list>
-        <v-list-tile @click.native="right = !right">
-          <v-list-tile-action>
-            <v-icon light>compare_arrows</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-title>Switch drawer (click me)</v-list-tile-title>
-        </v-list-tile>
-      </v-list>
-    </v-navigation-drawer>
-    <v-footer
-      :fixed="fixed"
-      app
-    >
-      <span>&copy; 2019</span>
-    </v-footer>
-  </v-app>
+<template lang="pug">
+  v-app(class="hide-overflow")
+    v-toolbar(absolute :class="layoutProperty.toolbarClass")
+      v-toolbar-title 鸿丰服装
+      v-spacer
+      ToolbarTransparentButton(v-for="item,index in PageConfig.layout.toolbar.buttons" :key="index" :icon="item.icon" :text="item.text" :type="layoutProperty.type")
+    v-content(id="app-content" class="scroll-y" :style="{maxHeight: layoutProperty.maxHeight + 'px'}")
+      nuxt
 </template>
 
 <script>
+import $ from 'jquery'
+import ToolbarTransparentButton from '@/components/ToolbarTransparentButton'
+import PageData from '@/utils/pageData'
+
 export default {
   data() {
     return {
-      clipped: false,
-      drawer: false,
-      fixed: false,
-      items: [
-        {
-          icon: 'apps',
-          title: 'Welcome',
-          to: '/'
-        },
-        {
-          icon: 'bubble_chart',
-          title: 'Inspire',
-          to: '/inspire'
-        }
-      ],
-      miniVariant: false,
-      right: true,
-      rightDrawer: false,
-      title: 'Vuetify.js'
+      layoutProperty: {
+        maxHeight: 0,
+        toolbarClass: 'toolbar-trans',
+        type: 0
+      },
+      PageConfig: PageData
+    }
+  },
+  components: {
+    ToolbarTransparentButton
+  },
+  mounted() {
+    this.layoutProperty.maxHeight = $(window).height()
+    window.onresize = event => {
+      this.layoutProperty.maxHeight = $(window).height()
+    }
+
+    $('#app-content')[0].addEventListener('scroll', this.handleScroll)
+  },
+  methods: {
+    handleScroll() {
+      if ($('#app-content').scrollTop() > 0) {
+        this.layoutProperty.toolbarClass = ''
+        this.layoutProperty.type = 1
+      } else {
+        this.layoutProperty.toolbarClass = 'toolbar-trans'
+        this.layoutProperty.type = 0
+      }
     }
   }
 }
 </script>
+
+<style lang="stylus" scoped>
+.toolbar-trans {
+  background-color: transparent;
+}
+</style>
+

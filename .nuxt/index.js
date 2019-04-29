@@ -11,6 +11,7 @@ import { setContext, getLocation, getRouteData, normalizeError } from './utils'
 /* Plugins */
 
 import nuxt_plugin_vuetify_e5914fcc from 'nuxt_plugin_vuetify_e5914fcc' // Source: ../plugins/vuetify (mode: 'all')
+import nuxt_plugin_lodash_3538f289 from 'nuxt_plugin_lodash_3538f289' // Source: ../plugins/lodash (mode: 'all')
 
 // Component: <NoSsr>
 Vue.component(NoSsr.name, NoSsr)
@@ -131,6 +132,10 @@ async function createApp(ssrContext) {
 
   if (typeof nuxt_plugin_vuetify_e5914fcc === 'function') {
     await nuxt_plugin_vuetify_e5914fcc(app.context, inject)
+  }
+
+  if (typeof nuxt_plugin_lodash_3538f289 === 'function') {
+    await nuxt_plugin_lodash_3538f289(app.context, inject)
   }
 
   // If server-side, wait for async component to be resolved first
