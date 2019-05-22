@@ -5,8 +5,6 @@
 pipeline {
     agent any
 
-    tools {nodejs "node"}
-
     // environment {
     //     SYSTEM = "${params.System}"
     //     CLIENT = "${params.Client}"
