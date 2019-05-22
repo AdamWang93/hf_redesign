@@ -1,9 +1,14 @@
 <template lang="pug">
   v-app(class="hide-overflow")
     v-toolbar(absolute :class="layoutProperty.toolbarClass")
-      v-toolbar-title 鸿丰服装
+      v-toolbar-title(:class="layoutProperty.toolbarTitleClass") 鸿丰服装
       v-spacer
-      ToolbarTransparentButton(v-for="item,index in PageConfig.layout.toolbar.buttons" :key="index" :icon="item.icon" :text="item.text" :type="layoutProperty.type")
+      ToolbarTransparentButton(v-for="item,index in PageConfig.layout.toolbar.buttons" 
+        :key="index" 
+        :icon="item.icon"
+        :text="item.text"
+        :type="layoutProperty.type"
+        @click="onToolbarButtonClicked(item.routePath)")
     v-content(id="app-content" class="scroll-y" :style="{maxHeight: layoutProperty.maxHeight + 'px'}")
       nuxt
 </template>
@@ -19,7 +24,8 @@ export default {
       layoutProperty: {
         maxHeight: 0,
         toolbarClass: 'toolbar-trans',
-        type: 0
+        type: 0,
+        toolbarTitleClass: 'toolbar-trans-title'
       },
       PageConfig: PageData
     }
@@ -38,12 +44,19 @@ export default {
   methods: {
     handleScroll() {
       if ($('#app-content').scrollTop() > 0) {
+        //if scroll
         this.layoutProperty.toolbarClass = ''
         this.layoutProperty.type = 1
+        this.layoutProperty.toolbarTitleClass = ''
       } else {
+        //if scroll to top
         this.layoutProperty.toolbarClass = 'toolbar-trans'
         this.layoutProperty.type = 0
+        this.layoutProperty.toolbarTitleClass = 'toolbar-trans-title'
       }
+    },
+    onToolbarButtonClicked(sPath) {
+      routes.push({ path: sPath })
     }
   }
 }
@@ -52,6 +65,10 @@ export default {
 <style lang="stylus" scoped>
 .toolbar-trans {
   background-color: transparent;
+}
+
+.toolbar-trans-title {
+  color: white;
 }
 </style>
 

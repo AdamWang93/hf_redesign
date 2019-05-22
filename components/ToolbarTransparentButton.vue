@@ -23,6 +23,10 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+.toolbar-trans-btn {
+  color: white !important;
+}
+
 .toolbar-trans-btn:before {
   background-color: transparent;
 }

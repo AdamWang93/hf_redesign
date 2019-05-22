@@ -4,7 +4,8 @@ const PageData = {
       buttons: [
         {
           icon: 'home',
-          text: '首页'
+          text: '首页',
+          routePath: '/'
         }
       ]
     }
