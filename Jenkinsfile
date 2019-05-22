@@ -20,9 +20,9 @@ pipeline {
             }
         }
 
-        stage('Check Node Version1') {
+        stage('Build for Production') {
             steps {
-                sh 'node -v'
+                sh 'npm build'
             }
         }
     }
