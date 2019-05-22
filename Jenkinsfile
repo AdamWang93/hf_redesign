@@ -22,7 +22,7 @@ pipeline {
 
         stage('Build for Production') {
             steps {
-                sh 'npm build'
+                sh 'npm run build'
             }
         }
     }
