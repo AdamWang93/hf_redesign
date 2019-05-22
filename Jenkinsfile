@@ -20,6 +20,12 @@ pipeline {
             }
         }
 
+        stage('Install Dependency') {
+            steps {
+                sh 'npm install'
+            }
+        }
+
         stage('Build for Production') {
             steps {
                 sh 'npm run build'
