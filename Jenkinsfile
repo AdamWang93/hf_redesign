@@ -19,5 +19,11 @@ pipeline {
                 sh 'node -v'
             }
         }
+
+        stage('Check Node Version1') {
+            steps {
+                sh 'node -v'
+            }
+        }
     }
 }
