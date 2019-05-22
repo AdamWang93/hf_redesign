@@ -4,8 +4,8 @@
 
 pipeline {
     agent any
-    
-    tools {nodejs "node"}
+
+    tools {nodejs "node-version-installed"}
     // environment {
     //     SYSTEM = "${params.System}"
     //     CLIENT = "${params.Client}"
