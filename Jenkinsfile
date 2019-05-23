@@ -34,7 +34,7 @@ pipeline {
 
         stage('Install Dependency') {
             steps {
-                sh 'npm install'
+                sh 'npm i nuxt'
             }
         }
 
