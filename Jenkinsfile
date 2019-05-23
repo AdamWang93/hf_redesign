@@ -32,11 +32,17 @@ pipeline {
           }
         }
 
-        stage('Install Dependency') {
-            steps {
-                sh 'npm i nuxt'
-            }
+        stage('Check Config') {
+          steps{
+            sh 'npm config list'
+          }
         }
+
+        // stage('Install Dependency') {
+        //     steps {
+        //         sh 'npm i nuxt'
+        //     }
+        // }
 
         // stage('Build for Production') {
         //     steps {
