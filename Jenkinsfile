@@ -20,22 +20,28 @@ pipeline {
             }
         }
 
-        stage('Set npm registry') {
-          steps{
-            sh 'npm config set registry https://registry.npm.taobao.org'
-          }
-        }
-
-        stage('Install Dependency') {
+        stage('Check NPM Version') {
             steps {
-                sh 'npm install'
+                sh 'npm -v'
             }
         }
 
-        stage('Build for Production') {
-            steps {
-                sh 'npm run build'
-            }
-        }
+        // stage('Set npm registry') {
+        //   steps{
+        //     sh 'npm config set registry https://registry.npm.taobao.org'
+        //   }
+        // }
+
+        // stage('Install Dependency') {
+        //     steps {
+        //         sh 'npm install'
+        //     }
+        // }
+
+        // stage('Build for Production') {
+        //     steps {
+        //         sh 'npm run build'
+        //     }
+        // }
     }
 }
