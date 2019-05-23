@@ -37,13 +37,13 @@ pipeline {
             sh 'npm config list'
           }
         }
-        
 
-        // stage('Install Dependency') {
-        //     steps {
-        //         sh 'npm i nuxt'
-        //     }
-        // }
+
+        stage('Install CNPM') {
+            steps {
+                sh 'npm install -g cnpm --registry=https://registry.npm.taobao.org'
+            }
+        }
 
         // stage('Build for Production') {
         //     steps {
