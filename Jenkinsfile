@@ -26,11 +26,11 @@ pipeline {
             }
         }
 
-        // stage('Set npm registry') {
-        //   steps{
-        //     sh 'npm config set registry https://registry.npm.taobao.org'
-        //   }
-        // }
+        stage('Set npm registry') {
+          steps{
+            sh 'npm config set registry https://registry.npm.taobao.org'
+          }
+        }
 
         // stage('Check Config') {
         //   steps{
@@ -39,11 +39,11 @@ pipeline {
         // }
 
 
-        // stage('Install CNPM') {
-        //     steps {
-        //         sh 'npm install -g cnpm --registry=https://registry.npm.taobao.org'
-        //     }
-        // }
+        stage('Install latest npm') {
+            steps {
+                sh 'npm install npm@latest -g'
+            }
+        }
 
         // stage('Build for Production') {
         //     steps {
