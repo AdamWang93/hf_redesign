@@ -26,24 +26,24 @@ pipeline {
             }
         }
 
-        stage('Set npm registry') {
-          steps{
-            sh 'npm config set registry https://registry.npm.taobao.org'
-          }
-        }
+        // stage('Set npm registry') {
+        //   steps{
+        //     sh 'npm config set registry https://registry.npm.taobao.org'
+        //   }
+        // }
 
-        stage('Check Config') {
-          steps{
-            sh 'npm config list'
-          }
-        }
+        // stage('Check Config') {
+        //   steps{
+        //     sh 'npm config list'
+        //   }
+        // }
 
 
-        stage('Install CNPM') {
-            steps {
-                sh 'npm install -g cnpm --registry=https://registry.npm.taobao.org'
-            }
-        }
+        // stage('Install CNPM') {
+        //     steps {
+        //         sh 'npm install -g cnpm --registry=https://registry.npm.taobao.org'
+        //     }
+        // }
 
         // stage('Build for Production') {
         //     steps {
