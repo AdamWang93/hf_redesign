@@ -5,7 +5,7 @@
 pipeline {
     agent any
 
-    // tools {nodejs "nuxt_node"}
+    tools {nodejs "nuxt_node"}
     // environment {
     //     SYSTEM = "${params.System}"
     //     CLIENT = "${params.Client}"
@@ -16,26 +16,26 @@ pipeline {
     stages {
         stage('Set npm registry') {
           steps{
-            nodejs(nodeJSInstallationName: 'nuxt_node') {
-                    sh "npm config set registry 'https://registry.npm.taobao.org'"
-            }
+            sh "npm config set registry 'https://registry.npm.taobao.org'"
           }
         }
 
         stage('Check Node Version') {
             steps {
-              nodejs(nodeJSInstallationName: 'nuxt_node') {
-                sh 'node -v'
-              }
+              sh 'node -v'
+            }
+        }
+
+        stage('Check Yarn') {
+            steps {
+              sh 'yarn -v'
             }
         }
 
 
         stage('Build for Production') {
             steps {
-              nodejs(nodeJSInstallationName: 'nuxt_node') {
-                sh 'npm run build'
-              }
+              sh 'npm run build'
             }
         }
     }
