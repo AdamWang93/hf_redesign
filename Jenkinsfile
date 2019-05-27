@@ -21,22 +21,22 @@ pipeline {
         }
 
         stage('Check Node Version') {
-            steps {
-              sh 'node -v'
-            }
+          steps {
+            sh 'node -v'
+          }
         }
 
         stage('Check Yarn') {
-            steps {
-              sh 'yarn -v'
-            }
+          steps {
+            sh 'docker -v'
+          }
         }
 
 
         stage('Build for Production') {
-            steps {
-              sh 'npm run build'
-            }
+          steps {
+            sh 'npm run build'
+          }
         }
     }
 }
