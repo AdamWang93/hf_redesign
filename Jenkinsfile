@@ -2,19 +2,10 @@
 //     return "hf_jenkins_pipeline/jenkinsSteps"
 // }
 
-node {
-  env.NODEJS_HOME = "${tool 'nuxt_node'}"
-  // on linux / mac
-  env.PATH="${env.NODEJS_HOME}/bin:${env.PATH}"
-  // on windows
-  // env.PATH="${env.NODEJS_HOME};${env.PATH}"
-  sh 'npm --version'
-}
-
 pipeline {
     agent any
 
-    tools {nodejs "nuxt_node"}
+    // tools {nodejs "nuxt_node"}
     // environment {
     //     SYSTEM = "${params.System}"
     //     CLIENT = "${params.Client}"
@@ -23,6 +14,14 @@ pipeline {
     // }
 
     stages {
+        stage('Build NodeJs') {
+            steps {
+                nodejs(nodeJSInstallationName: 'nuxt_node', configId: '<config-file-provider-id>') {
+                    sh 'npm config ls'
+                }
+            }
+        }
+
         stage('Check Node Version') {
             steps {
                 sh 'node -v'
