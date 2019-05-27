@@ -22,6 +22,14 @@ pipeline {
           }
         }
 
+        stage('Check Node Version') {
+            steps {
+              nodejs(nodeJSInstallationName: 'nuxt_node') {
+                sh 'node -v'
+              }
+            }
+        }
+
 
         stage('Build for Production') {
             steps {
