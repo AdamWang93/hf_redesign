@@ -32,18 +32,18 @@ pipeline {
           }
         }
 
-        // stage('Check Config') {
-        //   steps{
-        //     sh 'npm config list'
-        //   }
-        // }
-
-
-        stage('Install latest npm') {
+        stage('Install Latest npm') {
             steps {
                 sh 'npm install npm@latest -g'
             }
         }
+
+        stage('Install Dependency') {
+            steps {
+                sh 'npm i nuxt cross-env'
+            }
+        }
+
 
         // stage('Build for Production') {
         //     steps {
