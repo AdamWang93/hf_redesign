@@ -16,7 +16,7 @@ pipeline {
     stages {
         stage('Build NodeJs') {
             steps {
-                nodejs(nodeJSInstallationName: 'nuxt_node', configId: '<config-file-provider-id>') {
+                nodejs(nodeJSInstallationName: 'nuxt_node') {
                     sh 'npm config ls'
                 }
             }
