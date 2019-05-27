@@ -32,23 +32,23 @@ pipeline {
           }
         }
 
-        stage('Install Latest npm') {
-            steps {
-                sh 'npm install npm@latest -g'
-            }
-        }
-
-        stage('Install Dependency') {
-            steps {
-                sh 'npm i nuxt cross-env'
-            }
-        }
-
-
-        // stage('Build for Production') {
+        // stage('Install Latest npm') {
         //     steps {
-        //         sh 'npm run build'
+        //         sh 'npm install npm@latest -g'
         //     }
         // }
+
+        // stage('Install Dependency') {
+        //     steps {
+        //         sh 'npm i nuxt cross-env'
+        //     }
+        // }
+
+
+        stage('Build for Production') {
+            steps {
+                sh 'npm run build'
+            }
+        }
     }
 }
