@@ -26,6 +26,12 @@ pipeline {
           }
         }
 
+        stage('Check Path'){
+          steps{
+            sh 'echo $PATH'
+          }
+        }
+
 
         stage('Build for Production') {
           steps {
