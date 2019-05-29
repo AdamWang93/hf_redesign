@@ -23,7 +23,7 @@ pipeline {
         stage('Check Node Version') {
           steps {
             nodejs(nodeJSInstallationName: 'nuxt_node'){
-              sh 'echo $PATH'
+              sh 'yarn -v'
             }
           }
         }
