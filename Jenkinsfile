@@ -22,7 +22,9 @@ pipeline {
 
         stage('Check Node Version') {
           steps {
-            sh 'node -v'
+            nodejs(nodeJSInstallationName: 'nuxt_node'){
+              sh 'node -v'
+            }
           }
         }
 
