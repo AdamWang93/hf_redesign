@@ -26,17 +26,11 @@ pipeline {
           }
         }
 
-        stage('Install Nuxt') {
+
+        stage('Build for Production') {
           steps {
-            sh 'npm install --no-package-lock --no-save nuxt'
+            sh 'npm run build'
           }
         }
-
-
-        // stage('Build for Production') {
-        //   steps {
-        //     sh 'npm run build'
-        //   }
-        // }
     }
 }
