@@ -14,11 +14,11 @@ pipeline {
     // }
 
     stages {
-        // stage('Set npm registry') {
-        //   steps{
-        //     sh "npm config set registry 'https://registry.npm.taobao.org'"
-        //   }
-        // }
+        stage('Set npm registry') {
+          steps{
+            sh "npm config set registry 'https://registry.npm.taobao.org'"
+          }
+        }
 
         stage('Check Node Version') {
           steps {
@@ -28,7 +28,7 @@ pipeline {
 
         stage('Install Nuxt') {
           steps {
-            sh 'npm install --save nuxt'
+            sh 'npm install --no-package-lock --no-save nuxt'
           }
         }
 
