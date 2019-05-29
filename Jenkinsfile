@@ -5,7 +5,7 @@
 pipeline {
     agent any
 
-    // tools {nodejs "nuxt_node"}
+    tools {nodejs "nuxt_node"}
     // environment {
     //     SYSTEM = "${params.System}"
     //     CLIENT = "${params.Client}"
@@ -22,17 +22,15 @@ pipeline {
 
         stage('Check Node Version') {
           steps {
-            nodejs(nodeJSInstallationName: 'nuxt_node'){
-              sh 'yarn -v'
-            }
+            sh 'node -v'
           }
         }
 
-        // stage('Check Yarn') {
-        //   steps {
-        //     sh 'docker -v'
-        //   }
-        // }
+        stage('Install Nuxt') {
+          steps {
+            sh 'npm install --save nuxt'
+          }
+        }
 
 
         // stage('Build for Production') {
