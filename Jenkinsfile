@@ -35,7 +35,7 @@ pipeline {
 
         stage('Build for Production') {
           steps {
-            sh 'npm run build'
+            sh 'sudo npm run build'
           }
         }
     }
