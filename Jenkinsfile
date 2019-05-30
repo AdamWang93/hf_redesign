@@ -14,15 +14,15 @@ pipeline {
     // }
 
     stages {
-        stage('Set npm registry') {
-          steps{
-            sh "npm config set registry 'https://registry.npm.taobao.org'"
-          }
-        }
+        // stage('Set npm registry') {
+        //   steps{
+        //     sh "npm config set registry 'https://registry.npm.taobao.org'"
+        //   }
+        // }
 
-        stage('Check Node Version') {
+        stage('Check NPM Config') {
           steps {
-            sh 'node -v'
+            sh 'npm config list'
           }
         }
 
