@@ -32,6 +32,11 @@ pipeline {
           }
         }
 
+        stage('Check User'){
+          steps{
+            sh 'echo $BUILD_USER_ID'
+          }
+        }
 
         stage('Build for Production') {
           steps {
