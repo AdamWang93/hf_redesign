@@ -34,7 +34,7 @@ pipeline {
 
         stage('Check User'){
           steps{
-            sh 'echo env.BUILD_USER_ID'
+            sh 'echo ${env.BUILD_USER_ID}'
           }
         }
 
