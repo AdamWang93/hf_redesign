@@ -5,6 +5,10 @@
 pipeline {
     agent any
 
+    environment {
+      userId = "${env.UID}";
+    } 
+
     tools {nodejs "nuxt_node"}
     // environment {
     //     SYSTEM = "${params.System}"
@@ -29,6 +33,12 @@ pipeline {
         stage('Check Path'){
           steps{
             sh 'echo $PATH'
+          }
+        }
+
+        stage('Check User'){
+          steps{
+            sh 'echo $userId'
           }
         }
 
