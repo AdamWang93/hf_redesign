@@ -38,7 +38,7 @@ pipeline {
 
         stage('Check User'){
           steps{
-            sh 'echo $userId'
+            sh 'echo ${BUILD_USER}'
           }
         }
 
